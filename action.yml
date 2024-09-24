@@ -1,8 +1,21 @@
-name: Sample action
+name: Prepare build
+inputs:
+  access_token:
+    description: "The GitHub access token"
+    required: true
 runs:
   using: composite
   steps:
-    - name: Sample step
+    - name: Inject access token
       shell: bash
+      env:
+        ACCESS_TOKEN: ${{ inputs.access_token }}
       run: |
-        echo "Hello"
+        git config --global url.https://$ACCESS_TOKEN@github.com/.insteadOf git@github.com:
+     - uses: actions/checkout@v4
+     - uses: ruby/setup-ruby@v1
+       with:
+         bundler-cache: true
+     - uses: maxim-lobanov/setup-xcode@v1
+       with:
+         xcode-version: 15.4
