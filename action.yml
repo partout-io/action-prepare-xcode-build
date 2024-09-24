@@ -1,0 +1,8 @@
+name: Sample action
+runs:
+  using: composite
+  steps:
+    - name: Sample step
+      shell: bash
+      run: |
+        echo "Hello"
