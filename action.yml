@@ -1,4 +1,4 @@
-name: Prepare build
+name: Prepare Xcode build
 inputs:
   access_token:
     description: "The GitHub access token"
