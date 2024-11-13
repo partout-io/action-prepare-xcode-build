@@ -18,4 +18,4 @@ runs:
         bundler-cache: true
     - uses: maxim-lobanov/setup-xcode@v1
       with:
-        xcode-version: 15.4
+        xcode-version: 16.1
