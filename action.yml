@@ -6,12 +6,10 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Inject access token
+    - name: Use HTTPS
       shell: bash
-      env:
-        ACCESS_TOKEN: ${{ inputs.access_token }}
       run: |
-        git config --global url.https://$ACCESS_TOKEN@github.com/.insteadOf git@github.com:
+        git config --global url.https://github.com/.insteadOf git@github.com:
     - uses: actions/checkout@v4
       with:
         token: ${{ inputs.access_token }}
