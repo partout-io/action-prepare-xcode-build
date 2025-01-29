@@ -1,4 +1,8 @@
 name: Prepare Xcode build
+inputs:
+  access_token:
+    description: "The GitHub access token"
+    required: true
 runs:
   using: composite
   steps:
@@ -8,6 +12,7 @@ runs:
         git config --global url.https://github.com/.insteadOf git@github.com:
     - uses: actions/checkout@v4
       with:
+        token: ${{ inputs.access_token }}
         submodules: true
     - uses: ruby/setup-ruby@v1
       with:
