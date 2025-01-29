@@ -2,10 +2,6 @@ name: Prepare Xcode build
 runs:
   using: composite
   steps:
-    - name: Use HTTPS
-      shell: bash
-      run: |
-        git config --global url.https://github.com/.insteadOf git@github.com:
     - uses: actions/checkout@v4
       with:
         submodules: true
