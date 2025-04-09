@@ -3,6 +3,10 @@ inputs:
   access_token:
     description: "The GitHub access token"
     required: true
+  submodules:
+    description: "Fetch submodules"
+    required: false
+    default: true
 runs:
   using: composite
   steps:
@@ -13,7 +17,7 @@ runs:
     - uses: actions/checkout@v4
       with:
         token: ${{ inputs.access_token }}
-        submodules: true
+        submodules: ${{ inputs.submodules }}
     - uses: ruby/setup-ruby@v1
       with:
         bundler-cache: true
