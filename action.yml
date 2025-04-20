@@ -14,6 +14,7 @@ runs:
       shell: bash
       run: |
         git config --global url."https://${{ inputs.access_token }}@github.com/".insteadOf "https://github.com/"
+        git config --global url."https://${{ inputs.access_token }}@github.com/".insteadOf "git@github.com:"
     - name: Fetch repository
       uses: actions/checkout@v4
       with:
