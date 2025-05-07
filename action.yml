@@ -7,6 +7,12 @@ inputs:
     description: "Fetch submodules"
     required: false
     default: false
+  certificates_url:
+    description: "The URL to the certificates ZIP"
+    required: false
+  certificates_passphrase:
+    description: "The encryption passphrase of the certificates ZIP"
+    required: false
 runs:
   using: composite
   steps:
@@ -25,3 +31,12 @@ runs:
     - uses: maxim-lobanov/setup-xcode@v1
       with:
         xcode-version: 16.1
+    - name: Install certificates
+      shell: bash
+      if: ${{ inputs.certificates_url }}
+      env:
+        ACCESS_TOKEN: ${{ inputs.access_token }}
+        CERTIFICATES_URL: ${{ inputs.certificates_url }}
+        CERTIFICATES_PASSPHRASE: ${{ inputs.certificates_passphrase }}
+      run: |
+        ${{ github.action_path }}/install-certificates.sh
