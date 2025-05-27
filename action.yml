@@ -25,9 +25,6 @@ runs:
       with:
         token: ${{ inputs.access_token }}
         submodules: ${{ inputs.submodules }}
-    - uses: ruby/setup-ruby@v1
-      with:
-        bundler-cache: true
     - uses: maxim-lobanov/setup-xcode@v1
       with:
         xcode-version: 16.3
