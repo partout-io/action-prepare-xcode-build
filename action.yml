@@ -1,16 +1,16 @@
 name: Prepare Xcode build
 inputs:
-  access_token:
+  access-token:
     description: "The GitHub access token"
     required: true
   submodules:
     description: "Fetch submodules"
     required: false
     default: false
-  certificates_url:
+  certificates-url:
     description: "The URL to the certificates ZIP"
     required: false
-  certificates_passphrase:
+  certificates-passphrase:
     description: "The encryption passphrase of the certificates ZIP"
     required: false
 runs:
@@ -19,21 +19,21 @@ runs:
     - name: Inject HTTPS token
       shell: bash
       run: |
-        git config --global url."https://${{ inputs.access_token }}@github.com/".insteadOf "git@github.com:"
+        git config --global url."https://${{ inputs.access-token }}@github.com/".insteadOf "git@github.com:"
     - name: Fetch repository
       uses: actions/checkout@v4
       with:
-        token: ${{ inputs.access_token }}
+        token: ${{ inputs.access-token }}
         submodules: ${{ inputs.submodules }}
     - uses: maxim-lobanov/setup-xcode@v1
       with:
         xcode-version: 26
     - name: Install certificates
       shell: bash
-      if: ${{ inputs.certificates_url }}
+      if: ${{ inputs.certificates-url }}
       env:
-        ACCESS_TOKEN: ${{ inputs.access_token }}
-        CERTIFICATES_URL: ${{ inputs.certificates_url }}
-        CERTIFICATES_PASSPHRASE: ${{ inputs.certificates_passphrase }}
+        ACCESS_TOKEN: ${{ inputs.access-token }}
+        CERTIFICATES_URL: ${{ inputs.certificates-url }}
+        CERTIFICATES_PASSPHRASE: ${{ inputs.certificates-passphrase }}
       run: |
         ${{ github.action_path }}/install-certificates.sh
