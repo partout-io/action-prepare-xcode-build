@@ -27,7 +27,7 @@ runs:
         submodules: ${{ inputs.submodules }}
     - uses: maxim-lobanov/setup-xcode@v1
       with:
-        xcode-version: 26
+        xcode-version: 26.1
     - name: Install certificates
       shell: bash
       if: ${{ inputs.certificates-url }}
