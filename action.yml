@@ -2,7 +2,7 @@ name: Prepare Xcode build
 inputs:
   access-token:
     description: "The GitHub access token"
-    required: true
+    required: false
   submodules:
     description: "Fetch submodules"
     required: false
@@ -18,6 +18,7 @@ runs:
   steps:
     - name: Inject HTTPS token
       shell: bash
+      if: ${{ inputs.access-token }}
       run: |
         git config --global url."https://${{ inputs.access-token }}@github.com/".insteadOf "git@github.com:"
     - name: Fetch repository
