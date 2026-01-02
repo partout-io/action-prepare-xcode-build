@@ -24,7 +24,7 @@ runs:
     - name: Fetch repository
       uses: actions/checkout@v4
       with:
-        token: ${{ inputs.access-token }}
+        token: ${{ inputs.access-token || github.token }}
         submodules: ${{ inputs.submodules }}
     - uses: maxim-lobanov/setup-xcode@v1
       with:
