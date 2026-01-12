@@ -17,7 +17,7 @@ p12_password=""
 keychain_path="$tmp_root/tmp.keychain-db"
 keychain_password=""
 keychain_timeout=$((30 * 60)) # 30 minutes
-profiles_root=~/Library/MobileDevice/Provisioning\ Profiles
+profiles_root=~/Library/Developer/Xcode/UserData/Provisioning\ Profiles/
 
 # ZIP
 rm -rf "$tmp_root"
