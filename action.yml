@@ -38,3 +38,7 @@ runs:
         CERTIFICATES_PASSPHRASE: ${{ inputs.certificates-passphrase }}
       run: |
         ${{ github.action_path }}/install-certificates.sh
+    - name: Skip macro validation
+      shell: bash
+      run: |
+        ${{ github.action_path }}/skip-macro-validation.sh
