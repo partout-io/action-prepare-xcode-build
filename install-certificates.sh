@@ -13,7 +13,7 @@ certs_filename=certificates.zip
 tmp_root=$RUNNER_TEMP/certificates
 
 p12_path="$tmp_root/certificates.p12"
-p12_password=""
+p12_password="asd"
 keychain_path="$tmp_root/tmp.keychain-db"
 keychain_password=""
 keychain_timeout=$((30 * 60)) # 30 minutes
